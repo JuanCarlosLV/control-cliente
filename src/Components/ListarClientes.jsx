@@ -28,8 +28,14 @@ function ListarClientes() {
   const filtrarClientes = idBuscar
     ? clientes.filter((cliente) =>
         cliente.idCliente.toString().includes(idBuscar)
+        
       )
     : clientes;
+
+  
+  const validarInputs = (input) =>{
+    return input=="" ? "Solo se puede buscar por sID": "No existe el registro";
+  }
 
   const mostrarTabla = filtrarClientes.length > 0;
 
@@ -126,9 +132,7 @@ function ListarClientes() {
             ) : (
               <>
                 <h2 className="font-mono font-medium text-red-800 text-xl">
-                  {idBuscar
-                    ? "No se encontraron resultados"
-                    : "No se encontraron registros de clientes"}
+                  {validarInputs(idBuscar)}
                 </h2>
               </>
             )}
